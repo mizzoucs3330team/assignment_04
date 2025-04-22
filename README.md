@@ -4,26 +4,17 @@
 
 Please log things that you have done here so that we can more quickly get started on things that still need to be done.
 
-- [ ] Example todo 1
-- [x] Example todo 2
-
-- [x] Skeleton Project Out
-
-(create classes based on test cases which import corresponsing class)
-GAME
-- [ ] Game.java
-
-MAZE
-- [x] Cell.java
-- [x] CellComponents.java
-- [ ] Grid.java
-- [x] Row.java
-
-PLAYER
-- [x] Movement.java
-- [/] Player.java (progress but not done)
-
-FINAL
-- [ ] Debugging
-- [ ] Testing
+- [ ] GAME
+	- [ ] Game
+- [ ] MAZE
+	- [x] Cell -- Evan
+	- [x] CellComponents -- Evan
+	- [ ] Grid
+	- [x] Row -- Evan
+- [ ] PLAYER
+	- [x] Movement -- Evan
+	- [ ] Player (progress but not done) -- Evan
+- [ ] FINAL
+	- [ ] Debugging
+	- [ ] Testing
 
