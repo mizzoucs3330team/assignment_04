@@ -14,8 +14,8 @@ GAME
 - [ ] Game.java
 
 MAZE
-- [ ] Cell.java
-- [ ] CellComponents.java
+- [x] Cell.java
+- [x] CellComponents.java
 - [ ] Grid.java
 - [ ] Row.java
 
