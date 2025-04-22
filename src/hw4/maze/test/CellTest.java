@@ -142,6 +142,4 @@ class CellTest {
 		cell.setRight(null);
 		assertEquals(CellComponents.WALL, cell.getRight());
 	}
-	
-	
 }
