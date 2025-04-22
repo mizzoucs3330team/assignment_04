@@ -17,12 +17,13 @@ MAZE
 - [x] Cell.java
 - [x] CellComponents.java
 - [ ] Grid.java
-- [ ] Row.java
+- [x] Row.java
 
 PLAYER
-- [ ] Movement.java
-- [ ] Player.java
+- [x] Movement.java
+- [/] Player.java (progress but not done)
 
 FINAL
 - [ ] Debugging
+- [ ] Testing
 
