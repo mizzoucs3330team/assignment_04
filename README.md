@@ -7,5 +7,22 @@ Please log things that you have done here so that we can more quickly get starte
 - [ ] Example todo 1
 - [x] Example todo 2
 
-- [ ] Skeleton Project Out
+- [x] Skeleton Project Out
+
+(create classes based on test cases which import corresponsing class)
+GAME
+- [ ] Game.java
+
+MAZE
+- [ ] Cell.java
+- [ ] CellComponents.java
+- [ ] Grid.java
+- [ ] Row.java
+
+PLAYER
+- [ ] Movement.java
+- [ ] Player.java
+
+FINAL
+- [ ] Debugging
 
