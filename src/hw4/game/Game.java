@@ -8,7 +8,7 @@ public class Game {
 	private Grid grid;
 
 	/**
-	 * Create a new game.
+	 * Create a new game with an existing grid.
 	 * 
 	 * @param grid The grid to be played on.
 	 */
@@ -16,6 +16,11 @@ public class Game {
 		this.grid = grid;
 	}
 
+	/**
+	 * Create a new game with a random grid.
+	 * 
+	 * @param size The size of the grid to be made.
+	 */
 	public Game(int size) {
 		if (size == 3 || size == 5) {
 			this.grid = Grid.createRandomGrid(size);
@@ -42,23 +47,38 @@ public class Game {
 		this.grid = grid;
 	}
 
+	/**
+	 * Move the player.
+	 * 
+	 * @param movement LEFT, RIGHT, UP, or DOWN.
+	 * @param player   The player object.
+	 * 
+	 * @return Returns true on success, false otherwise.
+	 */
 	public boolean play(Movement movement, Player player) {
 		if (movement == null || player == null)
 			return false;
 
 		switch (movement) {
-			// TODO: player movement methods not yet implemented
-			case UP:
+			case UP: {
 				// return player.moveUp(grid);
-			case DOWN:
+				break;
+			}
+			case DOWN: {
 				// return player.moveDown(grid);
-			case LEFT:
+				break;
+			}
+			case LEFT: {
 				// return player.moveLeft(grid);
-			case RIGHT:
+				break;
+			}
+			case RIGHT: {
 				// return player.moveRight(grid);
-			default:
-				return false;
+				break;
+			}
 		}
+
+		return true;
 	}
 
 	@Override
