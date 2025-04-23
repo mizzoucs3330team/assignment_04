@@ -88,31 +88,30 @@ public class Game {
 		if (movement == null || player == null)
 			return false;
 
-		boolean fail = false;
-
 		Row row = player.getCurrentRow();
 		int rowIndex;
 		for (int i = 0;; i++) {
+			if (i >= grid.getRows().size()) {
+				return false;
+			}
+
 			if (grid.getRows().get(i) == row) {
 				rowIndex = i;
 				break;
 			}
 
-			if (i >= grid.getRows().size()) {
-				return false;
-			}
 		}
 
 		Cell cell = player.getCurrentCell();
 		int cellIndex;
 		for (int i = 0;; i++) {
+			if (i >= row.getCells().size()) {
+				return false;
+			}
+
 			if (row.getCells().get(i) == cell) {
 				cellIndex = i;
 				break;
-			}
-
-			if (i >= row.getCells().size()) {
-				return false;
 			}
 		}
 
@@ -155,6 +154,8 @@ public class Game {
 				break;
 			}
 		}
+		
+		if (rowIndex < 0 || rowIndex >= grid.getRows().size()) return false;
 
 		row = grid.getRows().get(rowIndex);
 		player.setRow(row);

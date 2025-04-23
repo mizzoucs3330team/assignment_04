@@ -10,8 +10,7 @@ public class Grid {
 	}
 
 	public void setRows(ArrayList<Row> rows) {
-		if (rows != null)
-			this.rows = rows;
+		this.rows = rows;
 	}
 
 	@Override
