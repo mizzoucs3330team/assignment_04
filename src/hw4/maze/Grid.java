@@ -1,7 +1,11 @@
 package hw4.maze;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Random;
+
+import org.junit.jupiter.api.Test;
 
 public class Grid {
     private ArrayList<Row> rows;
@@ -16,7 +20,16 @@ public class Grid {
 
     @Override
     public String toString() {
-        return "Grid [rows=" + rows + "]";
+
+		String str = "Grid [rows=[";
+
+		for (Row row : rows) {
+			str += row.toString();
+		}
+
+		str += "]]";
+
+		return str;
     }
 
     public static Grid createRandomGrid(int size){

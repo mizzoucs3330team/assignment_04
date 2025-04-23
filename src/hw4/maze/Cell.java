@@ -11,6 +11,11 @@ public class Cell {
         this.down = down;
     }
 
+    @Override
+    public String toString(){
+        return "Cell [left=" + getLeft() + ", right=" + getRight() + ", up=" + getUp() + ", down=" + getDown() + "]";
+    }
+
     //get/set
     public CellComponents getLeft() { return left; }
     public CellComponents getRight() { return right; }

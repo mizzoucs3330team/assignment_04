@@ -36,6 +36,7 @@ public class Player {
 		return cell;
 	}
 
+    @Override
 	public String toString() {
 		Row currentRow = getCurrentRow();
 		Cell currentCell = getCurrentCell();
