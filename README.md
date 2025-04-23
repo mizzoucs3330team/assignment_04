@@ -10,10 +10,13 @@ Please log things that you have done here so that we can more quickly get starte
 	- [x] Cell -- Evan
 	- [x] CellComponents -- Evan
 	- [ ] Grid
-	- [x] Row -- Evan
+	- [ ] Row -- Evan
 - [ ] PLAYER
 	- [x] Movement -- Evan
-	- [ ] Player (progress but not done) -- Evan
+	- [ ] Player (progress but not done) -- Evan, Clayton
+		- [x] getCurrentRow()
+		- [x] getCurrentCell()
+		- [x] toString()
 - [ ] FINAL
 	- [ ] Debugging
 	- [ ] Testing

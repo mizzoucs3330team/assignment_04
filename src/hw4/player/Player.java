@@ -1,20 +1,32 @@
 package hw4.player;
 
 import hw4.maze.Cell;
-import hw4.maze.Grid;
 import hw4.maze.Row;
 
 public class Player {
 	// params
-	private Grid grid;
-	private int rowIndex;
-	private int colIndex;
+//	private Grid grid;
+//	private int rowIndex;
+//	private int colIndex;
+	private Row row;
+	private Cell cell;
 
 	// constructor
-	public Player(Grid grid, int rowIndex, int colIndex) {
-		this.grid = grid;
-		this.rowIndex = rowIndex;
-		this.colIndex = colIndex;
+//	public Player(Grid grid, int rowIndex, int colIndex) {
+//		this.grid = grid;
+//		this.rowIndex = rowIndex;
+//		this.colIndex = colIndex;
+//	}
+
+	/**
+	 * Create a Player object.
+	 * 
+	 * @param r The Row.
+	 * @param c The Cell.
+	 */
+	public Player(Row row, Cell cell) {
+		this.row = row;
+		this.cell = cell;
 	}
 
 	/**
@@ -23,7 +35,8 @@ public class Player {
 	 * @return Returns the Row.
 	 */
 	public Row getCurrentRow() {
-		return grid.getRows().get(rowIndex);
+//		return grid.getRows().get(rowIndex);
+		return row;
 	}
 
 	/**
@@ -32,7 +45,8 @@ public class Player {
 	 * @return Returns the Cell.
 	 */
 	public Cell getCurrentCell() {
-		return getCurrentRow().getCells().get(colIndex);
+//		return getCurrentRow().getCells().get(colIndex);
+		return cell;
 	}
 
 	public String toString() {
@@ -42,6 +56,7 @@ public class Player {
 		return "Player [currentCell=" + currentCell + ", currentRow=" + currentRow + "]";
 	}
 
+	// This will need to be rewritten. -- C.K.
 	// move method
 	public boolean move(Movement m) {
 		// get current row and col indicies
