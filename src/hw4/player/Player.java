@@ -36,6 +36,24 @@ public class Player {
 		return cell;
 	}
 
+	/**
+	 * Sets the current Row.
+	 * 
+	 * @return void
+	 */
+    public void setRow(Row row) {
+        this.row = row;
+    }
+
+	/**
+	 * Sets the current Cell.
+	 * 
+	 * @return void
+	 */
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
     @Override
 	public String toString() {
 		Row currentRow = getCurrentRow();
@@ -43,4 +61,5 @@ public class Player {
 
 		return "Player [currentCell=" + currentCell + ", currentRow=" + currentRow + "]";
 	}
+
 }
