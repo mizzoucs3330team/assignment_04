@@ -50,6 +50,15 @@ public class Game {
 		this.grid = grid;
 	}
 
+	public void printGrid() {
+		for (Row row : grid.getRows()) {
+			for (Cell cell : row.getCells()) {
+				System.out.print("S");
+			}
+			System.out.println();
+		}
+	}
+
 	/**
 	 * Move the player.
 	 * 
@@ -91,6 +100,7 @@ public class Game {
 		}
 
 		switch (movement) {
+
 			case LEFT: {
 				if (cell.getLeft() == CellComponents.WALL) {
 					return false;
