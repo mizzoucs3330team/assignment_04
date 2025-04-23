@@ -11,7 +11,8 @@ public class Grid {
 	}
 
 	public void setRows(ArrayList<Row> rows) {
-		if (rows != null) this.rows = rows;
+		if (rows != null)
+			this.rows = rows;
 	}
 
 	@Override
@@ -21,7 +22,11 @@ public class Grid {
 
 		for (Row row : rows) {
 			str += row.toString();
+			str += ", ";
 		}
+
+		// Remove trailing comma.
+		str = str.substring(0, str.length() - 2);
 
 		str += "]]";
 

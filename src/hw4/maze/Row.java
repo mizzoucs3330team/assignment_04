@@ -32,7 +32,8 @@ public class Row {
 		String str = "Row [cells=[";
 
 		for (Cell cell : cells) {
-			str += cell.toString() + ", ";
+			str += cell.toString();
+			str += ", ";
 		}
 
 		// Remove trailing comma.
