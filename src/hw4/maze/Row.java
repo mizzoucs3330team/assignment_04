@@ -24,7 +24,7 @@ public class Row {
 	}
 
 	public void setCells(ArrayList<Cell> cellList) {
-		this.cells = cellList;
+		if (cells != null) this.cells = cellList;
 	}
 
     @Override

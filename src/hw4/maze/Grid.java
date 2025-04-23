@@ -11,7 +11,7 @@ public class Grid {
 	}
 
 	public void setRows(ArrayList<Row> rows) {
-		this.rows = rows;
+		if (rows != null) this.rows = rows;
 	}
 
 	@Override

@@ -22,9 +22,9 @@ public class Cell {
     public CellComponents getUp() { return up; }
     public CellComponents getDown() { return down; }
     
-    public void setLeft(CellComponents left) { this.left = left; }
-    public void setRight(CellComponents right) { this.right = right; }
-    public void setUp(CellComponents up) { this.up = up; }
-    public void setDown(CellComponents down) { this.down = down; }
+    public void setLeft(CellComponents left) { if (left != null) this.left = left; }
+    public void setRight(CellComponents right) { if (right != null) this.right = right; }
+    public void setUp(CellComponents up) { if (up != null) this.up = up; }
+    public void setDown(CellComponents down) { if (down != null) this.down = down; }
 
 }
