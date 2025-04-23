@@ -32,11 +32,6 @@ public class Grid {
 		return rows;
 	}
 
-	@Override
-	public String toString() {
-		return "Grid [rows=" + rows + "]";
-	}
-
 	public static Grid createRandomGrid(int size) {
 		ArrayList<Row> rows = new ArrayList<>();
 		Random rand = new Random();
