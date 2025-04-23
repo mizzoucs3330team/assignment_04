@@ -24,17 +24,19 @@ public class Row {
 	}
 
 	public void setCells(ArrayList<Cell> cellList) {
-		if (cells != null) this.cells = cellList;
+		if (cells != null)
+			this.cells = cellList;
 	}
 
-    @Override
 	public String toString() {
 		String str = "Row [cells=[";
 
 		for (Cell cell : cells) {
-			str += cell.toString();
-			str += ", ";
+			str += cell.toString() + ", ";
 		}
+
+		// Remove trailing comma.
+		str = str.substring(0, str.length() - 2);
 
 		str += "]]";
 
