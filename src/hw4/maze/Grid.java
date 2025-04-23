@@ -1,25 +1,21 @@
 package hw4.maze;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.junit.jupiter.api.Test;
-
 public class Grid {
-    private ArrayList<Row> rows;
+	private ArrayList<Row> rows;
 
-    public Grid(ArrayList<Row> rows) {
-        this.rows = rows;
-    }
+	public Grid(ArrayList<Row> rows) {
+		setRows(rows);
+	}
 
-    public ArrayList<Row> getRows() {
-        return rows;
-    }
+	public void setRows(ArrayList<Row> rows) {
+		this.rows = rows;
+	}
 
-    @Override
-    public String toString() {
+	@Override
+	public String toString() {
 
 		String str = "Grid [rows=[";
 
@@ -30,14 +26,23 @@ public class Grid {
 		str += "]]";
 
 		return str;
-    }
+	}
 
-    public static Grid createRandomGrid(int size){
-        ArrayList<Row> rows = new ArrayList<>();
-        Random rand = new Random();
+	public ArrayList<Row> getRows() {
+		return rows;
+	}
 
-        //TODO: implement grid creation logic
+	@Override
+	public String toString() {
+		return "Grid [rows=" + rows + "]";
+	}
 
-        return new Grid(rows);
-    }
+	public static Grid createRandomGrid(int size) {
+		ArrayList<Row> rows = new ArrayList<>();
+		Random rand = new Random();
+
+		// TODO: implement grid creation logic
+
+		return new Grid(rows);
+	}
 }

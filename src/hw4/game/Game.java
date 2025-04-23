@@ -1,6 +1,9 @@
 package hw4.game;
 
+import hw4.maze.Cell;
+import hw4.maze.CellComponents;
 import hw4.maze.Grid;
+import hw4.maze.Row;
 import hw4.player.Movement;
 import hw4.player.Player;
 
@@ -53,30 +56,83 @@ public class Game {
 	 * @param movement LEFT, RIGHT, UP, or DOWN.
 	 * @param player   The player object.
 	 * 
-	 * @return Returns true on success, false otherwise.
+	 * @return Returns true on successful move, false otherwise.
 	 */
 	public boolean play(Movement movement, Player player) {
 		if (movement == null || player == null)
 			return false;
 
+		boolean fail = false;
+
+		Row row = player.getCurrentRow();
+		int rowIndex;
+		for (int i = 0;; i++) {
+			if (grid.getRows().get(i) == row) {
+				rowIndex = i;
+				break;
+			}
+
+			if (i >= grid.getRows().size()) {
+				return false;
+			}
+		}
+
+		Cell cell = player.getCurrentCell();
+		int cellIndex;
+		for (int i = 0;; i++) {
+			if (row.getCells().get(i) == cell) {
+				cellIndex = i;
+				break;
+			}
+
+			if (i >= row.getCells().size()) {
+				return false;
+			}
+		}
+
 		switch (movement) {
-			case UP: {
-				// return player.moveUp(grid);
-				break;
-			}
-			case DOWN: {
-				// return player.moveDown(grid);
-				break;
-			}
 			case LEFT: {
-				// return player.moveLeft(grid);
+				if (cell.getLeft() == CellComponents.WALL) {
+					return false;
+				}
+
+				cellIndex--;
+
 				break;
 			}
 			case RIGHT: {
-				// return player.moveRight(grid);
+				if (cell.getRight() == CellComponents.WALL) {
+					return false;
+				}
+
+				cellIndex++;
+
+				break;
+			}
+			case DOWN: {
+				if (cell.getDown() == CellComponents.WALL) {
+					return false;
+				}
+
+				rowIndex--;
+
+				break;
+			}
+			case UP: {
+				if (cell.getUp() == CellComponents.WALL) {
+					return false;
+				}
+
+				rowIndex++;
+
 				break;
 			}
 		}
+
+		row = grid.getRows().get(rowIndex);
+		player.setRow(row);
+		cell = row.getCells().get(cellIndex);
+		player.setCell(cell);
 
 		return true;
 	}
