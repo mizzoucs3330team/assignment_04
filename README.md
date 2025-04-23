@@ -4,10 +4,10 @@
 
 Please log things that you have done here so that we can more quickly get started on things that still need to be done.
 
-- [ ] GAME
-	- [ ] Game
+- [ ] Game
+	- [ ] Random Grid Generation Logic
 - [ ] MAZE
-	- [x] Cell -- Evan
+	- [x] Cell -- Evan, Clayton
 	- [x] CellComponents -- Evan
 	- [ ] Grid
 	- [ ] Row -- Evan
@@ -18,6 +18,6 @@ Please log things that you have done here so that we can more quickly get starte
 		- [x] getCurrentCell()
 		- [x] toString()
 - [ ] FINAL
+	- [ ] Make all tests green.
 	- [ ] Debugging
-	- [ ] Testing
 
