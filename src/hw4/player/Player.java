@@ -1,5 +1,6 @@
 package hw4.player;
 
+import hw4.maze.Cell;
 import hw4.maze.Grid;
 import hw4.maze.Row;
 
@@ -23,6 +24,15 @@ public class Player {
 	 */
 	public Row getCurrentRow() {
 		return grid.getRows().get(rowIndex);
+	}
+
+	/**
+	 * Gets the current Cell.
+	 * 
+	 * @return Returns the Cell.
+	 */
+	public Cell getCurrentCell() {
+		return grid.getRows().get(rowIndex).getCells().get(colIndex);
 	}
 
 	// move method
