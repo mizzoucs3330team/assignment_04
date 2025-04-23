@@ -1,5 +1,7 @@
 package hw4.game;
 
+import java.util.ArrayList;
+
 import hw4.maze.Cell;
 import hw4.maze.CellComponents;
 import hw4.maze.Grid;
@@ -25,11 +27,26 @@ public class Game {
 	 * @param size The size of the grid to be made.
 	 */
 	public Game(int size) {
-		if (size == 3 || size == 5) {
-			this.grid = Grid.createRandomGrid(size);
-		} else {
-			this.grid = null;
+		this.grid = createRandomGrid(size);
+	}
+
+	/**
+	 * Create a random grid for the game.
+	 * 
+	 * @param size A grid size between 3 and 7.
+	 * @return Returns the grid.
+	 */
+	public Grid createRandomGrid(int size) {
+		if (size < 3 || size > 7) {
+			return null;
 		}
+
+		ArrayList<Row> rows = new ArrayList<>();
+//		Random rand = new Random();
+
+		// TODO: implement grid creation logic
+
+		return new Grid(rows);
 	}
 
 	/**
