@@ -32,7 +32,14 @@ public class Player {
 	 * @return Returns the Cell.
 	 */
 	public Cell getCurrentCell() {
-		return grid.getRows().get(rowIndex).getCells().get(colIndex);
+		return getCurrentRow().getCells().get(colIndex);
+	}
+
+	public String toString() {
+		Row currentRow = getCurrentRow();
+		Cell currentCell = getCurrentCell();
+
+		return "Player [currentCell=" + currentCell + ", currentRow=" + currentRow + "]";
 	}
 
 	// move method
