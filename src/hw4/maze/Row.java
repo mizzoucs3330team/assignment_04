@@ -33,6 +33,7 @@ public class Row {
 
 		for (Cell cell : cells) {
 			str += cell.toString();
+			str += ", ";
 		}
 
 		str += "]]";

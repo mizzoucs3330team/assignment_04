@@ -13,7 +13,7 @@ public class Cell {
 
     @Override
     public String toString(){
-        return "Cell [left=" + getLeft() + ", right=" + getRight() + ", up=" + getUp() + ", down=" + getDown() + "]";
+    	return "Cell [left=" + getLeft() + ", right=" + getRight() + ", up=" + getUp() + ", down=" + getDown() + "]";
     }
 
     //get/set
