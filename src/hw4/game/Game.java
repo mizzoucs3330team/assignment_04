@@ -1,14 +1,13 @@
 package hw4.game;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import hw4.maze.Cell;
 import hw4.maze.CellComponents;
 import hw4.maze.Grid;
 import hw4.maze.Row;
 import hw4.player.Movement;
 import hw4.player.Player;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
 	private Grid grid;
@@ -115,7 +114,58 @@ public class Game {
 		rows.get(exitRowIdx).getCells().get(0).setLeft(CellComponents.EXIT);
 
 		// EVAN -- DOUBLE CHECK CONSIST
-
+		for (int y = 0; y < size; y++){
+			for (int x = 0; x < size; x++){
+			Cell cell = rows.get(y).getCells().get(x);
+			
+			//top row
+			if (y == 0){
+			//left wall
+			if (x == 0){
+			if (rows.get(y+1).getCells().get(x).getUp() == CellComponents.APERTURE) cell.setDown(CellComponents.APERTURE);    //Down
+			if (rows.get(y).getCells().get(x-1).getRight() == CellComponents.APERTURE) cell.setLeft(CellComponents.APERTURE); //Left
+			}
+			//right wall
+			else if (x == size-1){
+			if (rows.get(y+1).getCells().get(x).getUp() == CellComponents.APERTURE) cell.setDown(CellComponents.APERTURE);    //Down
+			if (rows.get(y).getCells().get(x+1).getLeft() == CellComponents.APERTURE) cell.setRight(CellComponents.APERTURE); //Right
+			}
+			//else
+			else{
+			if (rows.get(y+1).getCells().get(x).getUp() == CellComponents.APERTURE) cell.setDown(CellComponents.APERTURE);    //Down
+			if (rows.get(y).getCells().get(x-1).getRight() == CellComponents.APERTURE) cell.setLeft(CellComponents.APERTURE); //Left
+			if (rows.get(y).getCells().get(x+1).getLeft() == CellComponents.APERTURE) cell.setRight(CellComponents.APERTURE); //Right
+			}
+			}
+			//bottom row
+			else if (y == size-1){
+			//left wall
+			if (x == 0){
+			if (rows.get(y-1).getCells().get(x).getDown() == CellComponents.APERTURE) cell.setUp(CellComponents.APERTURE);  //Up
+			if (rows.get(y).getCells().get(x-1).getRight() == CellComponents.APERTURE) cell.setLeft(CellComponents.APERTURE); //Left
+			}
+			//right wall
+			else if (x == size-1){
+			if (rows.get(y-1).getCells().get(x).getDown() == CellComponents.APERTURE) cell.setUp(CellComponents.APERTURE);  //Up
+			if (rows.get(y).getCells().get(x+1).getLeft() == CellComponents.APERTURE) cell.setRight(CellComponents.APERTURE); //Right
+			}
+			//else
+			else{
+			if (rows.get(y-1).getCells().get(x).getDown() == CellComponents.APERTURE) cell.setUp(CellComponents.APERTURE);  //Up
+			if (rows.get(y).getCells().get(x-1).getRight() == CellComponents.APERTURE) cell.setLeft(CellComponents.APERTURE); //Left
+			if (rows.get(y).getCells().get(x+1).getLeft() == CellComponents.APERTURE) cell.setRight(CellComponents.APERTURE); //Right
+			}
+			}
+			//middles
+			else{
+			if (rows.get(y-1).getCells().get(x).getDown() == CellComponents.APERTURE) cell.setUp(CellComponents.APERTURE);  //Up
+			if (rows.get(y+1).getCells().get(x).getUp() == CellComponents.APERTURE) cell.setDown(CellComponents.APERTURE);    //Down
+			if (rows.get(y).getCells().get(x-1).getRight() == CellComponents.APERTURE) cell.setLeft(CellComponents.APERTURE); //Left
+			if (rows.get(y).getCells().get(x+1).getDown() == CellComponents.APERTURE) cell.setRight(CellComponents.APERTURE); //Right
+			}
+			}
+			}
+			
 		// return grid
 		return new Grid(rows);
 
