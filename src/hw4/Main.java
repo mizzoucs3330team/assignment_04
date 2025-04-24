@@ -1,86 +1,79 @@
 package hw4;
 
-import hw4.game.Game;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
+
+import hw4.game.Game;
+import hw4.maze.Grid;
+import hw4.maze.Row;
+import hw4.player.Movement;
+import hw4.player.Player;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		Game game = new Game(7); // 3-7
+		System.out.println("===================================");
+		System.out.println();
+		Game game = new Game(3); // 3-7
+		Grid grid = game.getGrid();
+		ArrayList<Row> rows = grid.getRows();
+		Player player = new Player(rows.getLast(), rows.getLast().getCells().getLast());
+		game.play(Movement.DOWN, player);
 		System.out.println("Game Start!");
-		boolean lost = true;
-		Scanner scanner = new Scanner(System.in);
 
-		while(lost == true){
-			System.out.println("");
+		Scanner s = new Scanner(System.in);
+
+		while (true) {
+			System.out.println();
 			game.printGrid();
+			System.out.println();
 
-			System.out.println("\nChoose direction to move");
-			String dir = scanner.nextLine();
+			System.out.println("Type a movement. (WASD)");
 
-			//move left
-			if (scanner.equals("left")
-			|| scanner.equals("Left")
-			|| scanner.equals("LEFT")
-			|| scanner.equals("l")
-			|| scanner.equals("L")){
-				boolean valid = moveLeft();
-				if (!valid) System.out.println("\nBONK!");
-			}
+			String input = s.nextLine();
+			input = input.toUpperCase();
+			if (input.equals("A"))
+				input = "LEFT";
+			else if (input.equals("D"))
+				input = "RIGHT";
+			else if (input.equals("W"))
+				input = "UP";
+			else if (input.equals("S"))
+				input = "DOWN";
 
-			//move right
-			else if (scanner.equals("right")
-			|| scanner.equals("Right")
-			|| scanner.equals("RIGHT")
-			|| scanner.equals("r")
-			|| scanner.equals("R")){
-				boolean valid = moveRight();
-				if (!valid) System.out.println("\nBONK!");
-			}
+			System.out.println("===================================");
+			System.out.println();
 
-			//move up
-			else if (scanner.equals("up")
-			|| scanner.equals("Up")
-			|| scanner.equals("UP")
-			|| scanner.equals("u")
-			|| scanner.equals("U")){
-				boolean valid = moveUp();
-				if (!valid) System.out.println("\nBONK!");
-			}
-
-			//move down
-			else if (scanner.equals("down")
-			|| scanner.equals("Down")
-			|| scanner.equals("DOWN")
-			|| scanner.equals("d")
-			|| scanner.equals("D")){
-				boolean valid = moveDown();
-				if (!valid) System.out.println("\nBONK!");
-			}
-
-			//invalid
+			boolean success;
+			if (input.equals("LEFT"))
+				success = game.play(Movement.LEFT, player);
+			else if (input.equals("RIGHT"))
+				success = game.play(Movement.RIGHT, player);
+			else if (input.equals("UP"))
+				success = game.play(Movement.UP, player);
+			else if (input.equals("DOWN"))
+				success = game.play(Movement.DOWN, player);
 			else {
-				System.out.println("\nInvalid choice");
+				System.out.println("Inavlid Input");
+				continue;
 			}
+
+			String str;
+			if (success) {
+				str = "Moved!";
+			} else {
+				str = "BONK!";
+			}
+			int num = new Random().nextInt(10);
+			for (int i = 0; i < num; i++) {
+				str += "!";
+			}
+			System.out.println(str);
 
 		}
-	}
-	
-	public static boolean moveLeft(){
 
-		return false;
 	}
-	public static boolean moveRight(){
-		
-		return false;
-	}
-	public static boolean moveUp(){
-		
-		return false;
-	}
-	public static boolean moveDown(){
-		
-		return false;
-	}
+
 }

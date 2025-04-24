@@ -267,8 +267,7 @@ public class Game {
 		}
 
 		switch (movement) {
-
-			case LEFT: {
+			case Movement.LEFT: {
 				if (cell.getLeft() == CellComponents.WALL) {
 					return false;
 				}
@@ -277,7 +276,7 @@ public class Game {
 
 				break;
 			}
-			case RIGHT: {
+			case Movement.RIGHT: {
 				if (cell.getRight() == CellComponents.WALL) {
 					return false;
 				}
@@ -286,7 +285,7 @@ public class Game {
 
 				break;
 			}
-			case DOWN: {
+			case Movement.DOWN: {
 				if (cell.getDown() == CellComponents.WALL) {
 					return false;
 				}
@@ -295,7 +294,7 @@ public class Game {
 
 				break;
 			}
-			case UP: {
+			case Movement.UP: {
 				if (cell.getUp() == CellComponents.WALL) {
 					return false;
 				}
