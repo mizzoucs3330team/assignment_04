@@ -12,6 +12,8 @@ import hw4.player.Player;
 
 public class Game {
 	private Grid grid;
+	private int rowIndex = -1;
+	private int cellIndex = -1;
 
 	/**
 	 * Create a new game with an existing grid.
@@ -210,9 +212,16 @@ public class Game {
 	}
 
 	public void printGrid() {
-		for (Row row : grid.getRows()) {
-			for (Cell cell : row.getCells()) {
-				System.out.print("S");
+		for (int ri = 0; ri < grid.getRows().size(); ri++) {
+			Row row = grid.getRows().get(ri);
+			for (int ci = 0; ci < row.getCells().size(); ci++) {
+				if (ri == rowIndex && ci == cellIndex) {
+					System.out.print("A");
+				} else if (ci == 0 && row.getCells().get(ci).getLeft() == CellComponents.EXIT) {
+					System.out.print("E");
+				} else {
+					System.out.print("S");
+				}
 			}
 			System.out.println();
 		}
@@ -231,7 +240,7 @@ public class Game {
 			return false;
 
 		Row row = player.getCurrentRow();
-		int rowIndex;
+		rowIndex = 0;
 		for (int i = 0;; i++) {
 			if (i >= grid.getRows().size()) {
 				return false;
@@ -244,8 +253,8 @@ public class Game {
 
 		}
 
+		cellIndex = 0;
 		Cell cell = player.getCurrentCell();
-		int cellIndex;
 		for (int i = 0;; i++) {
 			if (i >= row.getCells().size()) {
 				return false;
