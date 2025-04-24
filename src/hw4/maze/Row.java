@@ -23,6 +23,11 @@ public class Row {
 		return cells;
 	}
 
+	/**
+	 * Set row cells.
+	 * 
+	 * @param cellList The cells.
+	 */
 	public void setCells(ArrayList<Cell> cellList) {
 		if (cells != null)
 			this.cells = cellList;

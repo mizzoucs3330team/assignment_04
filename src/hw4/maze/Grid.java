@@ -9,6 +9,11 @@ public class Grid {
 		setRows(rows);
 	}
 
+	/**
+	 * Set the grid's rows.
+	 * 
+	 * @param rows The rows.
+	 */
 	public void setRows(ArrayList<Row> rows) {
 		this.rows = rows;
 	}
@@ -31,6 +36,11 @@ public class Grid {
 		return str;
 	}
 
+	/**
+	 * Get rows.
+	 * 
+	 * @return Returns the rows.
+	 */
 	public ArrayList<Row> getRows() {
 		return rows;
 	}
