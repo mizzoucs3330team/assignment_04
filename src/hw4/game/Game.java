@@ -112,75 +112,75 @@ public class Game {
 		}
 
 		// EVAN -- DOUBLE CHECK CONSIST
-		for (int y = 0; y < size; y++) {
-			for (int x = 0; x < size; x++) {
-				Cell cell = rows.get(y).getCells().get(x);
-
-				// top row
-				if (y == 0) {
-					// left wall
-					if (x == 0) {
-						if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
-							cell.setDown(CellComponents.APERTURE); // Down
-						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
-							cell.setLeft(CellComponents.APERTURE); // Left
-					}
-					// right wall
-					else if (x == size - 1) {
-						if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
-							cell.setDown(CellComponents.APERTURE); // Down
-						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
-							cell.setRight(CellComponents.APERTURE); // Right
-					}
-					// else
-					else {
-						if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
-							cell.setDown(CellComponents.APERTURE); // Down
-						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
-							cell.setLeft(CellComponents.APERTURE); // Left
-						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
-							cell.setRight(CellComponents.APERTURE); // Right
-					}
-				}
-				// bottom row
-				else if (y == size - 1) {
-					// left wall
-					if (x == 0) {
-						if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
-							cell.setUp(CellComponents.APERTURE); // Up
-						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
-							cell.setLeft(CellComponents.APERTURE); // Left
-					}
-					// right wall
-					else if (x == size - 1) {
-						if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
-							cell.setUp(CellComponents.APERTURE); // Up
-						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
-							cell.setRight(CellComponents.APERTURE); // Right
-					}
-					// else
-					else {
-						if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
-							cell.setUp(CellComponents.APERTURE); // Up
-						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
-							cell.setLeft(CellComponents.APERTURE); // Left
-						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
-							cell.setRight(CellComponents.APERTURE); // Right
-					}
-				}
-				// middles
-				else {
-					if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
-						cell.setUp(CellComponents.APERTURE); // Up
-					if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
-						cell.setDown(CellComponents.APERTURE); // Down
-					if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
-						cell.setLeft(CellComponents.APERTURE); // Left
-					if (rows.get(y).getCells().get(x + 1).getDown() == CellComponents.APERTURE)
-						cell.setRight(CellComponents.APERTURE); // Right
-				}
-			}
-		}
+//		for (int y = 0; y < size; y++) {
+//			for (int x = 0; x < size; x++) {
+//				Cell cell = rows.get(y).getCells().get(x);
+//
+//				// top row
+//				if (y == 0) {
+//					// left wall
+//					if (x == 0) {
+//						if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
+//							cell.setDown(CellComponents.APERTURE); // Down
+//						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
+//							cell.setLeft(CellComponents.APERTURE); // Left
+//					}
+//					// right wall
+//					else if (x == size - 1) {
+//						if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
+//							cell.setDown(CellComponents.APERTURE); // Down
+//						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
+//							cell.setRight(CellComponents.APERTURE); // Right
+//					}
+//					// else
+//					else {
+//						if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
+//							cell.setDown(CellComponents.APERTURE); // Down
+//						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
+//							cell.setLeft(CellComponents.APERTURE); // Left
+//						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
+//							cell.setRight(CellComponents.APERTURE); // Right
+//					}
+//				}
+//				// bottom row
+//				else if (y == size - 1) {
+//					// left wall
+//					if (x == 0) {
+//						if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
+//							cell.setUp(CellComponents.APERTURE); // Up
+//						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
+//							cell.setLeft(CellComponents.APERTURE); // Left
+//					}
+//					// right wall
+//					else if (x == size - 1) {
+//						if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
+//							cell.setUp(CellComponents.APERTURE); // Up
+//						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
+//							cell.setRight(CellComponents.APERTURE); // Right
+//					}
+//					// else
+//					else {
+//						if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
+//							cell.setUp(CellComponents.APERTURE); // Up
+//						if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
+//							cell.setLeft(CellComponents.APERTURE); // Left
+//						if (rows.get(y).getCells().get(x + 1).getLeft() == CellComponents.APERTURE)
+//							cell.setRight(CellComponents.APERTURE); // Right
+//					}
+//				}
+//				// middles
+//				else {
+//					if (rows.get(y - 1).getCells().get(x).getDown() == CellComponents.APERTURE)
+//						cell.setUp(CellComponents.APERTURE); // Up
+//					if (rows.get(y + 1).getCells().get(x).getUp() == CellComponents.APERTURE)
+//						cell.setDown(CellComponents.APERTURE); // Down
+//					if (rows.get(y).getCells().get(x - 1).getRight() == CellComponents.APERTURE)
+//						cell.setLeft(CellComponents.APERTURE); // Left
+//					if (rows.get(y).getCells().get(x + 1).getDown() == CellComponents.APERTURE)
+//						cell.setRight(CellComponents.APERTURE); // Right
+//				}
+//			}
+//		}
 
 		// Create the exit.
 		int exitRowIdx = rand.nextInt(size);
