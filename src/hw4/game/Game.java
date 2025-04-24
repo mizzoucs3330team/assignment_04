@@ -1,13 +1,14 @@
 package hw4.game;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import hw4.maze.Cell;
 import hw4.maze.CellComponents;
 import hw4.maze.Grid;
 import hw4.maze.Row;
 import hw4.player.Movement;
 import hw4.player.Player;
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Game {
 	private Grid grid;
@@ -37,123 +38,87 @@ public class Game {
 	 * @return Returns the grid.
 	 */
 	public Grid createRandomGrid(int size) {
-		//initialization
+		Random rand = new Random();
+		// initialization
 		if (size < 3 || size > 7) {
 			return null;
 		}
 
 		ArrayList<Row> rows = new ArrayList<>();
-		Random rand = new Random();
 
-		//choose row for exit
-		int exitRow = rand.nextInt(size);
-
-		//build grid rows
-		for (int y = 0; y < size; y++){
+		// build grid rows
+		for (int ri = 0; ri < size; ri++) {
 			ArrayList<Cell> cells = new ArrayList<>();
 
-			//build cells in each row
-			for (int x = 0; x < size; x++){
-				//walls by default
+			// build cells in each row
+			for (int ci = 0; ci < size; ci++) {
 				CellComponents left = CellComponents.WALL;
 				CellComponents right = CellComponents.WALL;
 				CellComponents up = CellComponents.WALL;
 				CellComponents down = CellComponents.WALL;
-				
-				//leftmost column
-				if (x == 0) {
-					left = (y == exitRow) ? CellComponents.EXIT : CellComponents.WALL;
-				} else {
-					//copy right from left neighbor
-					left = cells.get(x-1).getRight();
-				}
-					
-				//rightmost column
-				if (x == size-1) {
-					right = CellComponents.WALL;
-				} else {
-					right = rand.nextBoolean() ? CellComponents.APERTURE : CellComponents.WALL;
+
+				// not top
+				if (ri != 0) {
+					// copy down from upper neighbor
+					up = rows.get(ri - 1).getCells().get(ci).getDown();
 				}
 
-				//top row
-				if (y == 0) {
-					up = CellComponents.WALL;
-				} else {
-					//copy down from upper neighbor
-					up = rows.get(y-1).getCells().get(x).getDown();
-				}
-
-				//bottom row
-				if (y == size-1) {
-					down = CellComponents.WALL;
-				} else {
+				// not bottom
+				if (ri != size - 1) {
 					down = rand.nextBoolean() ? CellComponents.APERTURE : CellComponents.WALL;
 				}
 
-				//create cell
-				Cell cell = new Cell(left, right, up, down);
-
-					
-				//ensure at least one aperture per cell
-				if (left != CellComponents.EXIT && 
-					left != CellComponents.APERTURE && 
-					right != CellComponents.APERTURE && 
-					up != CellComponents.APERTURE && 
-					down != CellComponents.APERTURE) 
-					{
-								
-						//choose a valid side to convert to aperture
-						ArrayList<CellComponents> candidates = new ArrayList<>();
-						
-						//left side (only if not exit)
-						if (left != CellComponents.EXIT) {
-							candidates.add(CellComponents.LEFT);
-						}
-						
-						//right side (only if not rightmost)
-						if (x < size-1) {
-							candidates.add(CellComponents.RIGHT);
-						}
-						
-						//up side (only if not top row)
-						if (y > 0) {
-							candidates.add(CellComponents.UP);
-						}
-						
-						//down side (only if not bottom row)
-						if (y < size-1) {
-							candidates.add(CellComponents.DOWN);
-						}
-						
-						//randomly select a candidate
-						CellComponents selected = candidates.get(rand.nextInt(candidates.size()));
-						
-						switch(selected) {
-							case LEFT:
-								cell.setLeft(CellComponents.APERTURE);
-								break;
-							case RIGHT:
-								cell.setRight(CellComponents.APERTURE);
-								break;
-							case UP:
-								cell.setUp(CellComponents.APERTURE);
-								break;
-							case DOWN:
-								cell.setDown(CellComponents.APERTURE);
-								break;
-					}
+				// not left
+				if (ci != 0) {
+					// copy right from left neighbor
+					left = cells.get(ci - 1).getRight();
 				}
 
-				//add each cell
+				// not right
+				if (ci != size - 1) {
+					right = rand.nextBoolean() ? CellComponents.APERTURE : CellComponents.WALL;
+				}
+
+				// create cell
+				Cell cell = new Cell(left, right, up, down);
+
+				// add each cell
 				cells.add(cell);
 			}
 
-			//add each row
+			// add each row
 			rows.add(new Row(cells));
 		}
 
-		//return grid
+		// Grid Checks
+		for (int ri = 0; ri < size; ri++) {
+			for (int ci = 0; ci < size; ci++) {
+
+				Cell cell = rows.get(ri).getCells().get(ci);
+
+				// If no aperture
+				if (cell.getUp() != CellComponents.APERTURE && cell.getDown() != CellComponents.APERTURE
+						&& cell.getLeft() != CellComponents.APERTURE && cell.getRight() != CellComponents.APERTURE) {
+					if (ri == 0) {
+						cell.setDown(CellComponents.APERTURE);
+						rows.get(ri + 1).getCells().get(ci).setUp(CellComponents.APERTURE);
+					} else {
+						cell.setUp(CellComponents.APERTURE);
+						rows.get(ri - 1).getCells().get(ci).setDown(CellComponents.APERTURE);
+					}
+				}
+
+			}
+		}
+
+		int exitRowIdx = rand.nextInt(size);
+		rows.get(exitRowIdx).getCells().get(0).setLeft(CellComponents.EXIT);
+
+		// EVAN -- DOUBLE CHECK CONSIST
+
+		// return grid
 		return new Grid(rows);
+
 	}
 
 	/**
@@ -247,7 +212,7 @@ public class Game {
 					return false;
 				}
 
-				rowIndex--;
+				rowIndex++;
 
 				break;
 			}
@@ -256,13 +221,24 @@ public class Game {
 					return false;
 				}
 
-				rowIndex++;
+				rowIndex--;
 
 				break;
 			}
 		}
-		
-		if (rowIndex < 0 || rowIndex >= grid.getRows().size()) return false;
+
+		if (movement == Movement.LEFT && cell.getLeft() == CellComponents.EXIT) {
+			// EXIT LOGIC
+			System.out.println("Congratulations, you escaped!");
+			return true;
+		}
+
+		if (rowIndex < 0 || rowIndex >= grid.getRows().size()) {
+			return false;
+		}
+		if (cellIndex < 0 || cellIndex >= row.getCells().size()) {
+			return false;
+		}
 
 		row = grid.getRows().get(rowIndex);
 		player.setRow(row);

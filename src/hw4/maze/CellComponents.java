@@ -1,6 +1,6 @@
 package hw4.maze;
 
 //enum for CellComponents
-public enum CellComponents{
-    WALL, APERTURE, EXIT, LEFT, RIGHT, UP, DOWN;
+public enum CellComponents {
+	WALL, APERTURE, EXIT;
 }
