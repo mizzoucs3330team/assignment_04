@@ -13,17 +13,22 @@ import hw4.player.Player;
 public class Main {
 
 	public static void main(String[] args) {
+		System.out.println("Enter Size: ");
+		Scanner s = new Scanner(System.in);
+		int size = s.nextInt();
+		if (size < 3 || size > 7) {
+			System.out.println("Invalid.");
+			return;
+		}
 
 		System.out.println("===================================");
 		System.out.println();
-		Game game = new Game(3); // 3-7
+		Game game = new Game(size); // 3-7
 		Grid grid = game.getGrid();
 		ArrayList<Row> rows = grid.getRows();
 		Player player = new Player(rows.getLast(), rows.getLast().getCells().getLast());
 		game.play(Movement.DOWN, player);
 		System.out.println("Game Start!");
-
-		Scanner s = new Scanner(System.in);
 
 		while (true) {
 			System.out.println();
